@@ -1,0 +1,99 @@
+html * {
+  margin: 0 0;
+}
+
+html {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 1.1em;
+  margin: 5vh 30vw 1vh 30vw;
+}
+
+html, body {
+  height: 100%;
+  height: -moz-available;
+  height: -webkit-fill-available;
+  height: fill-available;
+}
+
+@media (max-width: 700px) {
+  html {
+    margin: 2vh 5vw 1vh 5vw;
+  }
+
+  header {
+    margin-bottom: 2.5vh;
+  }
+
+  main {
+    margin-top: 2.5vh;
+    margin-bottom: 2.5vh;
+  }
+
+  footer {
+    margin-top: 2.5vh;
+  }
+}
+
+@media (max-height: 740px) {
+  html, body {
+    height: fit-content;
+  }
+}
+
+body {
+  background-color: rgb(17, 17, 17);
+  color: rgb(238, 238, 238);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+a, a:link, a:visited {
+  text-decoration: none;
+  color: rgb(255, 127, 80);
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+}
+
+main h2 {
+  margin-bottom: 1vh;
+}
+
+main section {
+  margin: 1.5vh 0 1.5vh 0;
+}
+
+ul {
+  margin-inline-start: -1em;
+}
+
+li {
+  margin: .25em 0 .25em 0;
+}
+
+.href-icon > * {
+  vertical-align: middle;
+}
+
+.href-icon svg {
+  height: 1rem;
+  width: 1rem;
+}
+
+.title-bash {
+  color: rgb(60, 179, 113);
+}
+
+footer {
+  border-style: solid;
+  border-width: .01em 0 0 0;
+  border-color: rgb(47, 47, 47);
+  padding-top: 1vh;
+}
+
+footer p {
+  text-align: center;
+}
