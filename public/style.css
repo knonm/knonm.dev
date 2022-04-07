@@ -5,7 +5,7 @@ html * {
 html {
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   font-size: 1.1em;
-  margin: 5vh 30vw 1vh 30vw;
+  margin: 4vh 30vw 1vh 30vw;
 }
 
 html, body {
@@ -13,31 +13,6 @@ html, body {
   height: -moz-available;
   height: -webkit-fill-available;
   height: fill-available;
-}
-
-@media (max-width: 700px) {
-  html {
-    margin: 2vh 5vw 1vh 5vw;
-  }
-
-  header {
-    margin-bottom: 2.5vh;
-  }
-
-  main {
-    margin-top: 2.5vh;
-    margin-bottom: 2.5vh;
-  }
-
-  footer {
-    margin-top: 2.5vh;
-  }
-}
-
-@media (max-height: 740px) {
-  html, body {
-    height: fit-content;
-  }
 }
 
 body {
@@ -63,15 +38,29 @@ main h2 {
 }
 
 main section {
-  margin: 1.5vh 0 1.5vh 0;
+  margin: 2.5vh 0 2.5vh 0;
 }
 
 ul {
   margin-inline-start: -1em;
 }
 
-li {
+ul li.project-list-element {
+  padding: 0;
+  margin: .75em 0 .75em 0;
+}
+
+ul li.href-list-element {
+  padding: 0;
   margin: .25em 0 .25em 0;
+}
+
+ul li:first-child {
+  margin-top: 0;
+}
+
+ul li:last-child {
+  margin-bottom: 0;
 }
 
 .href-icon > * {
@@ -96,4 +85,50 @@ footer {
 
 footer p {
   text-align: center;
+}
+
+@media (max-width: 700px) {
+  html {
+    margin: 2vh 5vw 1vh 5vw;
+  }
+
+  header {
+    margin-bottom: 2.5vh;
+  }
+
+  main {
+    margin-top: 2.5vh;
+    margin-bottom: 2.5vh;
+  }
+
+  main section {
+    margin: 4vh 0 4vh 0;
+  }
+
+  footer {
+    margin-top: 2.5vh;
+  }
+
+  ul li {
+    padding: 0;
+    margin: 0;
+  }
+
+  a {
+    padding: .775em 0 .775em 0;
+    display: inline-block;
+  }
+}
+
+@media (min-width: 700px) and (max-width: 1024px) {
+  html {
+    margin-left: 15vw;
+    margin-right: 15vw;
+  }
+}
+
+@media (max-height: 740px) {
+  html, body {
+    height: fit-content;
+  }
 }
