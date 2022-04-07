@@ -1,0 +1,23 @@
+{
+  "short_name": "knonm.dev",
+  "name": "Matheus Canon - Software Engineer",
+  "icons": [
+    {
+      "src": "/assets/green-terminal-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    },
+    {
+      "src": "/assets/green-terminal-maskable-512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#111111",
+  "display": "minimal-ui",
+  "scope": "/",
+  "theme_color": "#111111",
+  "description": "Webpage and portfolio of Matheus Canon, a software engineer / developer."
+}
