@@ -19,5 +19,6 @@
   "display": "minimal-ui",
   "scope": "/",
   "theme_color": "#111111",
-  "description": "Webpage and portfolio of Matheus Canon, a software engineer / developer."
+  "description": "Webpage and portfolio of Matheus Canon, a software engineer / developer.",
+  "orientation": "portrait"
 }
