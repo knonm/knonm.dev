@@ -5,14 +5,7 @@ html * {
 html {
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   font-size: 1.1em;
-  margin: 4vh 30vw 1vh 30vw;
-}
-
-html, body {
-  height: 100%;
-  height: -moz-available;
-  height: -webkit-fill-available;
-  height: fill-available;
+  margin: 0vh 30vw 0vh 30vw;
 }
 
 body {
@@ -21,11 +14,20 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  min-height: 100vh;
 }
 
 a, a:link, a:visited {
   text-decoration: none;
   color: rgb(255, 127, 80);
+}
+
+footer {
+  margin-bottom: 1vh;
+}
+
+header {
+  margin-top: 4vh;
 }
 
 main {
@@ -89,11 +91,12 @@ footer p {
 
 @media (max-width: 700px) {
   html {
-    margin: 2vh 5vw 1vh 5vw;
+    margin: 0vh 5vw 0vh 5vw;
   }
 
   header {
     margin-bottom: 2.5vh;
+    margin-top: 2vh;
   }
 
   main {
