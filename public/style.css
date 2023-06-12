@@ -56,6 +56,7 @@ main section {
 
 ul {
   margin-inline-start: -1em;
+  list-style-type: square;
 }
 
 ul li.project-list-element {
