@@ -3,6 +3,7 @@
   src: url('fonts/WebPlus_IBM_VGA_9x16.woff') format('woff');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 html * {
