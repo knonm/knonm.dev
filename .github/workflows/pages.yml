@@ -31,8 +31,8 @@ jobs:
           HREF_RESUME_PT: ${{ secrets.HREF_RESUME_PT }}
           HREF_RESUME_EN: ${{ secrets.HREF_RESUME_EN }}
         run: |
-          wget ${HREF_RESUME_PT} -O resume.pdf -P ./public/resume/pt
-          wget ${HREF_RESUME_EN} -O resume.pdf -P ./public/resume/en
+          wget -q ${HREF_RESUME_PT} -O resume.pdf -P ./public/resume/pt
+          wget -q ${HREF_RESUME_EN} -O resume.pdf -P ./public/resume/en
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
