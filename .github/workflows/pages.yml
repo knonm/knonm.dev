@@ -26,13 +26,28 @@ jobs:
         uses: actions/checkout@v3
       - name: Setup Pages
         uses: actions/configure-pages@v4
-      - shell: bash
-        env:
-          HREF_RESUME_PT: ${{ secrets.HREF_RESUME_PT }}
-          HREF_RESUME_EN: ${{ secrets.HREF_RESUME_EN }}
-        run: |
-          wget -q ${HREF_RESUME_PT} -O ./public/resume/pt/resume.pdf
-          wget -q ${HREF_RESUME_EN} -O ./public/resume/en/resume.pdf
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './public'
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4
+      - name: Download a single artifact (pt resume)
+        id: fetch-pt-resume
+        uses: actions/download-artifact@v4
+        with:
+          name: resume-knonm-dev-pt
+          github-token: ${{ secrets.GH_PAT_RESUME }}
+          repository: knonm/resume
+          path: ./public/resume/pt
+      - name: Download a single artifact (en resume)
+        id: fetch-en-resume
+        uses: actions/download-artifact@v4
+        with:
+          name: resume-knonm-dev-en
+          github-token: ${{ secrets.GH_PAT_RESUME }}
+          repository: knonm/resume
+          path: ./public/resume/en
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
@@ -40,3 +55,9 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+      - name: Trigger resume CI if fetching fails
+        if: ${{ failure() && (steps.fetch-pt-resume.conclusion == 'failure' || steps.fetch-en-resume.conclusion == 'failure') }}
+        run: |
+          gh workflow run main.yml --repo knonm/resume
+        env:
+          GH_TOKEN: ${{ secrets.GH_PAT_RESUME }}
