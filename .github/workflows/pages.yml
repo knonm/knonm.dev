@@ -34,7 +34,7 @@ jobs:
         uses: actions/deploy-pages@v4
       - name: Download a single artifact (pt resume)
         id: fetch-pt-resume
-        uses: actions/download-artifact@v4
+        uses: dawidd6/action-download-artifact@v3
         with:
           name: resume-knonm-dev-pt
           github-token: ${{ secrets.GH_PAT_RESUME }}
@@ -42,7 +42,7 @@ jobs:
           path: ./public/resume/pt
       - name: Download a single artifact (en resume)
         id: fetch-en-resume
-        uses: actions/download-artifact@v4
+        uses: dawidd6/action-download-artifact@v3
         with:
           name: resume-knonm-dev-en
           github-token: ${{ secrets.GH_PAT_RESUME }}
