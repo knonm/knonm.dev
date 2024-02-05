@@ -37,16 +37,16 @@ jobs:
         uses: dawidd6/action-download-artifact@v3
         with:
           name: resume-knonm-dev-pt
-          github-token: ${{ secrets.GH_PAT_RESUME }}
-          repository: knonm/resume
+          github_token: ${{ secrets.GH_PAT_RESUME }}
+          repo: knonm/resume
           path: ./public/resume/pt
       - name: Download a single artifact (en resume)
         id: fetch-en-resume
         uses: dawidd6/action-download-artifact@v3
         with:
           name: resume-knonm-dev-en
-          github-token: ${{ secrets.GH_PAT_RESUME }}
-          repository: knonm/resume
+          github_token: ${{ secrets.GH_PAT_RESUME }}
+          repo: knonm/resume
           path: ./public/resume/en
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
