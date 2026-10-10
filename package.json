@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "description": "My personal website",
   "scripts": {
-    "start": "http-server public"
-  },
-  "dependencies": {
-    "http-server": "^14.1.1"
+    "start": "bun server.js"
   }
 }
