@@ -1,17 +1,17 @@
-# Use an official Node.js runtime as the base image
-FROM node:lts
+# Use the official Bun runtime as the base image
+FROM oven/bun:1.4.3
 
 # Set the working directory inside the container
 WORKDIR /app
 
-# Copy package.json and package-lock.json to the container
-COPY package*.json ./
+# Copy the package manifest and server entry point
+COPY package.json server.js ./
 
 # Install app dependencies
-RUN npm install
+RUN bun install
 
-# Expose the port that http-server uses (default is 8080)
+# Expose the port that the static server uses (default is 8080)
 EXPOSE 8080
 
-# Command to start the http-server
-CMD ["npm", "start"]
+# Command to start the Bun static server
+CMD ["bun", "start"]
