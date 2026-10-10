@@ -1,10 +1,9 @@
-import { join, resolve } from "node:path";
-import { stat } from "node:fs/promises";
-
 // Static file server for ./public using Bun's built-in server.
 // Replaces the http-server npm package: serves the site on port 8080.
 const PORT = Number(process.env.PORT) || 8080;
-const ROOT = resolve("./public");
+const ROOT = process.cwd() + "/public";
+
+const notFound = () => new Response("Not Found", { status: 404 });
 
 Bun.serve({
   port: PORT,
@@ -14,31 +13,27 @@ Bun.serve({
     try {
       requestPath = decodeURIComponent(url.pathname);
     } catch {
-      return new Response("Not Found", { status: 404 });
+      return notFound();
     }
 
-    // Candidates: the requested file, or a directory's index.html.
-    const candidates = [
-      join(ROOT, requestPath),
-      join(ROOT, requestPath, "index.html"),
-    ];
+    // Reject anything that could escape the root directory.
+    if (requestPath.includes("..")) return notFound();
 
-    for (const candidate of candidates) {
-      // Reject anything that would escape the root directory.
-      if (candidate !== ROOT && !candidate.startsWith(ROOT + "/")) continue;
-      try {
-        const s = await stat(candidate);
-        if (s.isFile()) {
-          const file = Bun.file(candidate);
-          return new Response(file, {
-            headers: { "content-type": file.type },
-          });
-        }
-      } catch {
-        // Not found, keep looking.
+    // Candidate files: the requested file, or a directory's index.html.
+    // exists() returns false for directories and missing files, so it
+    // doubles as an "is file" check.
+    for (const candidate of [
+      ROOT + requestPath,
+      ROOT + requestPath + "/index.html",
+    ]) {
+      const file = Bun.file(candidate);
+      if (await file.exists()) {
+        return new Response(file, {
+          headers: { "content-type": file.type },
+        });
       }
     }
-    return new Response("Not Found", { status: 404 });
+    return notFound();
   },
 });
 
